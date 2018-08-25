@@ -1,4 +1,4 @@
-# image-gallery
+# vue-image-search
 todo: Home.vueに機能を追加していく。一通り実装したらconponentを分けてvuexを使う。
 > A Vue.js project
 

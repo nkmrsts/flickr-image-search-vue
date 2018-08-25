@@ -1,13 +1,20 @@
 <template>
-  <div class="resultContainer" v-if='result'>
-    {{ result }}
+  <div class="resultContainer" v-if='getResult'>
+    {{ getResult }}の検索結果
   </div>
 </template>
 
 <script>
 export default {
   name: 'Result',
-  props: ['result']
+  data () {
+    return {
+      result: ''
+    }
+  },
+  computed: {
+    getResult () { return this.$store.getters.searchWords }
+  }
 }
 </script>
 
