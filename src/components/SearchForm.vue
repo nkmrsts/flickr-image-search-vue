@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: 'Search',
+  name: 'SearchForm',
   data () {
     return {
       input: ''
@@ -15,7 +15,8 @@ export default {
   },
   methods: {
     submitSearch () {
-      this.$store.dispatch('getInput', this.input)
+      if (!this.input) return false
+      this.$store.dispatch('searchPhoto', this.input)
     }
   }
 }

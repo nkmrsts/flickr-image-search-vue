@@ -1,25 +1,27 @@
 <template>
-  <div class="hello">
+  <div>
     <h1>{{ msg }}</h1>
-    <Search></Search>
-    <Result></Result>
+    <searchForm/>
+    <searchResult/>
+    <searchPager/>
   </div>
 </template>
 
 <script>
-// import axios from 'axios'
-import Search from '@/components/Search'
-import Result from '@/components/Result'
+import SearchForm from '@/components/SearchForm'
+import SearchResult from '@/components/SearchResult'
+import SearchPager from '@/components/SearchPager'
 export default {
   name: 'Home',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Flickr Photos Search'
     }
   },
   components: {
-    Search: Search,
-    Result: Result
+    searchForm: SearchForm,
+    searchResult: SearchResult,
+    SearchPager: SearchPager
   }
 }
 </script>
