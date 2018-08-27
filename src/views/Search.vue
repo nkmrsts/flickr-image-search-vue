@@ -12,7 +12,7 @@ import SearchForm from '@/components/SearchForm'
 import SearchResult from '@/components/SearchResult'
 import SearchPager from '@/components/SearchPager'
 export default {
-  name: 'Home',
+  name: 'Search',
   data () {
     return {
       msg: 'Flickr Photos Search'
@@ -28,7 +28,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-}
+  h1,
+  h2 {
+    font-weight: normal;
+  }
 </style>

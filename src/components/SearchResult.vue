@@ -3,12 +3,12 @@
     <div class="resultsContainer" v-if='results.length > 0'>
        <span>{{ searchWords }}の検索結果</span>
        <div class="results">
-          <a class="resultsItem" :href="result.id" v-for='result in results' :key='result.id'>
+          <router-link :to="{ name: 'Detail', params: { id: result.id }}" class="resultsItem" v-for='result in results' :key='result.id'>
            <img :src="result.url_m || result.url_o" :alt="result.title">
-          </a>
+          </router-link>
         </div>
     </div>
-    <span v-else>画像が見つかりませんでした。</span>
+    <span v-else-if='total === "0"'>画像が見つかりませんでした。</span>
   </div>
 </template>
 
@@ -17,7 +17,8 @@ export default {
   name: 'SearchResult',
   computed: {
     searchWords () { return this.$store.state.searchWords },
-    results () { return this.$store.state.results }
+    results () { return this.$store.state.results },
+    total () { return this.$store.state.total }
   }
 }
 </script>
