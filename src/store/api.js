@@ -1,10 +1,10 @@
 import axios from 'axios'
-
+import { API_KEY } from './config.js'
 export default {
   fetchPhotos (text, page) {
     return this.fetchFlickr({
       method: 'flickr.photos.search',
-      api_key: '',
+      api_key: `${API_KEY}`,
       text: text,
       extras: 'description,date_taken,owner_name,icon_server,url_m,tags,views,url_o',
       per_page: 16,
