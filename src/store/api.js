@@ -13,6 +13,15 @@ export default {
       nojsoncallback: 1
     })
   },
+  fetchInfo (id) {
+    return this.fetchFlickr({
+      method: 'flickr.photos.getInfo',
+      api_key: `${API_KEY}`,
+      photo_id: id,
+      format: 'json',
+      nojsoncallback: 1
+    })
+  },
   fetchFlickr (params) {
     return axios
       .get('https://api.flickr.com/services/rest/', { params })

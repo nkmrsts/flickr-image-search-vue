@@ -32,4 +32,7 @@ export default {
   h2 {
     font-weight: normal;
   }
+  h1 {
+    margin-top: 0;
+  }
 </style>

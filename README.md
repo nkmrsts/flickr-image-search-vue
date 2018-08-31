@@ -1,5 +1,8 @@
 # vue-image-search
-todo: Home.vueに機能を追加していく。一通り実装したらconponentを分けてvuexを使う。
+//todo: Home.vueに機能を追加していく。一通り実装したらconponentを分けてvuexを使う。
+todos: 詳細ページのtagからtagの検索結果に飛びたい、
+       もっと読むではなくページネイション or スクロールで次が読み込まれるようにする
+       ローディングの追加
 > A Vue.js project
 
 ## Build Setup

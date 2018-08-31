@@ -11,7 +11,8 @@ export default new Vuex.Store({
     pageNum: '',
     maxPage: '',
     total: '',
-    results: []
+    results: [],
+    photoInfo: ''
   },
   mutations: {
     initSearch (state, payload) {
@@ -32,6 +33,9 @@ export default new Vuex.Store({
     },
     decrement (state) {
       state.pageNum -= 1
+    },
+    photoInfo (state, payload) {
+      state.photoInfo = payload
     }
   },
   actions: {
@@ -47,6 +51,12 @@ export default new Vuex.Store({
       api.fetchPhotos(this.state.searchWords, this.state.pageNum)
         .then(data => {
           commit('addResults', data.photos)
+        })
+    },
+    getInfo ({ commit }, id) {
+      api.fetchInfo(id)
+        .then(data => {
+          commit('photoInfo', data.photo)
         })
     }
   },

@@ -1,7 +1,10 @@
 <template>
   <div>
-    <span v-if='results.length > 0'>{{ searchWords }}の検索結果</span>
-    <span v-else-if='total === "0"'>画像が見つかりませんでした。</span>
+    <p v-if='results.length > 0'>
+      <span>{{ searchWords }}の検索結果</span>
+      <span>{{ total }}件</span>
+    </p>
+    <p v-else-if='total === "0"'>画像が見つかりませんでした。</p>
     <div class="results" v-if='results.length > 0'>
       <router-link :to="{ name: 'Detail', params: { id: result.id }}" class="resultsItem" v-for='result in results' :key='result.id'>
       <img :src="result.url_m || result.url_o" :alt="result.title">

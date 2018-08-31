@@ -7,18 +7,17 @@
       </div>
       <div class="col2">
         <h3 class="title">{{details.title}}</h3>
+        <p>{{details.datetaken}}</p>
         <p class="user">
           <img class="ico" :src='ico()' :alt="details.title">
           <span class="userName">{{details.ownername}}</span>
         </p>
-        <p>{{details.datetaken}}</p>
-
-        <p>description<br>{{desc}}</p>
+        <p><span v-html="desc"></span></p>
         <p>views: {{details.views}}</p>
-        <p v-if='tags.length > 0'>tags: <span class="tag" v-for='tag in tags' :key='tag'>{{tag}}</span></p>
+        <p v-if='tags.length > 0'>tag: <span class="tag" v-for='tag in tags' :key='tag'>{{tag}}</span></p>
       </div>
     </div>
-    <div>{{details}}</div>
+    <button @click="browserBack()">戻る</button>
   </div>
 </template>
 
@@ -30,8 +29,7 @@ export default {
       msg: 'Detail / Flickr Photos Search',
       details: {},
       tags: [],
-      desc: '',
-      icoSrc: ''
+      desc: ''
     }
   },
   props: {
@@ -40,22 +38,22 @@ export default {
   mounted: function () {
     this.filterResult()
     this.splitTags()
-    this.content()
+    this.desc = this.details.description._content
   },
   methods: {
+    browserBack () {
+      this.$router.go(-1)
+    },
     filterResult () {
       const results = this.$store.state.results
-      const currentResult = results.filter(currentValue => {
+      const selectedResult = results.filter(currentValue => {
         return this.id === currentValue.id
       })
-      this.details = currentResult[0]
+      this.details = selectedResult[0]
     },
     splitTags () {
       if (this.details.tags === '') return
       this.tags = this.details.tags.split(/\s+/)
-    },
-    content () {
-      this.desc = this.details.description._content
     },
     ico () {
       return `http://farm${this.details.iconfarm}.staticflickr.com/${this.details.iconserver}/buddyicons/${this.details.owner}.jpg`
@@ -68,6 +66,9 @@ export default {
 <style scoped>
   h1, h2 {
     font-weight: normal;
+  }
+  h1 {
+    margin-top: 0;
   }
   .imgContainer > img {
     max-width: 400px;
